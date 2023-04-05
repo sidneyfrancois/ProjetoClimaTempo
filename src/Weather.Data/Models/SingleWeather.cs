@@ -8,6 +8,7 @@ namespace Weather.Data.Models
 {
     public class SingleWeather
     {
+        public Guid Id { get; set; }
         public float Temperature { get; set; }
         public TypeWeather Type { get; set; }
     }
