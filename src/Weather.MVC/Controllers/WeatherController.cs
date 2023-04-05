@@ -6,16 +6,10 @@ using System.Web.Mvc;
 
 namespace Weather.MVC.Controllers
 {
-    [Route("weather")]
-    public class HomeController : Controller
+    public class WeatherController : Controller
     {
+        // GET: Weather
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult GetAllWeathers()
         {
             return View();
         }
