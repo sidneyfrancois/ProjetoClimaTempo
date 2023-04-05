@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Weather.Data.Context;
+using Weather.Data.Models;
 
 namespace Weather.MVC.Controllers
 {
+    [RoutePrefix("weather")]
     public class WeatherController : Controller
     {
+        private readonly MyDbContext _context = new MyDbContext();
+
         // GET: Weather
-        public ActionResult Index()
+        [HttpGet]
+        public IEnumerable<SingleWeather> GetAllWeathers()
         {
-            return View();
+            var result = _context.Wheaters.ToList();
+            return result;
         }
     }
 }
