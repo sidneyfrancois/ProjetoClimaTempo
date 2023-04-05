@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Context\MyDbContext.cs" />
     <Compile Include="Models\TypeWeather.cs" />
     <Compile Include="Models\SingleWeather.cs" />
