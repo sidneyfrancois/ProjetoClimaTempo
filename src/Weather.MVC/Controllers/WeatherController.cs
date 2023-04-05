@@ -11,7 +11,12 @@ namespace Weather.MVC.Controllers
     [RoutePrefix("weather")]
     public class WeatherController : Controller
     {
-        private readonly MyDbContext _context = new MyDbContext();
+        private readonly MyDbContext _context;
+
+        public WeatherController()
+        {
+            _context = new MyDbContext();
+        }
 
         // GET: Weather
         [HttpGet]
