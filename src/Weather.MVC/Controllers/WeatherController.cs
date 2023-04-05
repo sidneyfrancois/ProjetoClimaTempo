@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Weather.Data.Context;
 using Weather.Data.Models;
+using Weather.Data.ViewModel;
 
 namespace Weather.MVC.Controllers
 {
@@ -24,6 +25,22 @@ namespace Weather.MVC.Controllers
         {
             var result = _context.Wheaters.ToList();
             return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult AddWeather(AddWeatherViewModel viewModel)
+        {
+            var newWeather = new SingleWeather
+            {
+                Id = Guid.NewGuid(),
+                Temperature = viewModel.Temperature,
+                Type = viewModel.Type
+            };
+
+            _context.Wheaters.Add(newWeather);
+            _context.SaveChanges();
+
+            return View(newWeather);
         }
     }
 }
