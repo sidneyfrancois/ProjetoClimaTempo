@@ -20,10 +20,10 @@ namespace Weather.MVC.Controllers
 
         // GET: Weather
         [HttpGet]
-        public IEnumerable<SingleWeather> GetAllWeathers()
+        public ActionResult GetAllWeathers()
         {
             var result = _context.Wheaters.ToList();
-            return result;
+            return View(result);
         }
     }
 }
