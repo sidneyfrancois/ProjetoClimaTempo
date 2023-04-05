@@ -13,6 +13,6 @@ namespace Weather.Data.Context
         public MyDbContext() : base("ConnectionString")
         {}
 
-        private DbSet<SingleWeather> Wheaters { get; set; }
+        public DbSet<SingleWeather> Wheaters { get; set; }
     }
 }
