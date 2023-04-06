@@ -30,5 +30,13 @@ namespace Weather.MVC.Controllers
             var result = _context.Cidades.ToList();
             return View(result);
         }
+
+        [HttpGet]
+        [Route("estados")]
+        public ActionResult GetAllEstados()
+        {
+            var result = _context.Estados.ToList();
+            return View(result);
+        }
     }
 }
