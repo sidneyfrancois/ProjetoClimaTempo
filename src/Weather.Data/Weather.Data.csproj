@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\MyDbContext.cs" />
+    <Compile Include="Models\Cidade.cs" />
+    <Compile Include="Models\Estado.cs" />
+    <Compile Include="Models\PrevisaoClima.cs" />
     <Compile Include="Models\TypeWeather.cs" />
     <Compile Include="Models\SingleWeather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
