@@ -79,7 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerTest\WeatherController_Test.cs" />
+    <Compile Include="ControllerTest\PrevisaoClimaTempoController_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
