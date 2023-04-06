@@ -39,5 +39,15 @@ namespace Weather.Test.ControllerTest
             var cidadeResult = result.ViewData.Model;
             Trace.WriteLine("The list: " + cidadeResult);
         }
+
+        [TestMethod]
+        [DataSource("SourceDefault")]
+        public void GetAllClimas_Test()
+        {
+            var controller = new PrevisaoClimaTempoController();
+            var result = controller.GetAllClimas() as ViewResult;
+            var cidadeResult = result.ViewData.Model;
+            Trace.WriteLine("The list: " + cidadeResult);
+        }
     }
 }
