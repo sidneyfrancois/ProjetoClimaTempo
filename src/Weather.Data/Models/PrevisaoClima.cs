@@ -28,12 +28,10 @@ namespace Weather.Data.Models
         [MaxLength(15)]
         public string Clima { get; set; }
 
-        [Required]
         [Column("TemperaturaMinima")]
-        public float TemperaturaMinima { get; set; }
+        public decimal TemperaturaMinima { get; set; }
 
-        [Required]
         [Column("TemperaturaMaxima")]
-        public float TemperaturaMaxima { get; set; }
+        public decimal TemperaturaMaxima { get; set; }
     }
 }
