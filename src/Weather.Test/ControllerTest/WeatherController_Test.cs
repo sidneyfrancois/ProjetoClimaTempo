@@ -30,8 +30,11 @@ namespace Weather.Test.ControllerTest
 
             var controller = new WeatherController();
             var result = controller.AddWeather(viewModel) as ViewResult;
+            var weatherResult = (SingleWeather) result.ViewData.Model;
 
-            Assert.AreEqual(new SingleWeather().GetType(), result.Model.GetType());
+            Assert.AreEqual(new Guid().GetType(), weatherResult.Id.GetType());
+            Assert.AreEqual(TypeWeather.Ensolarado, weatherResult.Type);
+            Assert.AreEqual(25, weatherResult.Temperature);
         }
     }
 }
