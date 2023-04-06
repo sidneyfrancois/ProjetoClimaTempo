@@ -38,5 +38,13 @@ namespace Weather.MVC.Controllers
             var result = _context.Estados.ToList();
             return View(result);
         }
+
+        [HttpGet]
+        [Route("climas")]
+        public ActionResult GetAllClimas()
+        {
+            var result = _context.PrevisoesDeClima.ToList();
+            return View(result);
+        }
     }
 }
