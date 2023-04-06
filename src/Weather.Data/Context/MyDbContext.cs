@@ -10,9 +10,11 @@ namespace Weather.Data.Context
 {
     public class MyDbContext : DbContext
     {
-        public MyDbContext() : base("ConnectionString")
+        public MyDbContext() : base("DefaultConnection")
         {}
 
-        public DbSet<SingleWeather> Wheaters { get; set; }
+        public DbSet<Cidade> Cidades { get; set; }
+        public DbSet<Estado> Estados { get; set; }
+        public DbSet<PrevisaoClima> PrevisoesDeClima { get; set; }
     }
 }
