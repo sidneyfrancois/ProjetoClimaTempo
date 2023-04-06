@@ -22,6 +22,6 @@ namespace Weather.Data.Models
         [Required]
         [Column("EstadoId")]
         public int EstadoId { get; set; }
-        
+        public Estado Estado { get; set; }
     }
 }
