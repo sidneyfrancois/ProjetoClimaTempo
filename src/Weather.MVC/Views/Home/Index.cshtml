@@ -6,4 +6,4 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("Partials/TopThreeTemperature", Model)
+@{Html.RenderAction("TopThreeHottestTemperatures", "Home");}
