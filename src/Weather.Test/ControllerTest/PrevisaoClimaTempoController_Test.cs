@@ -57,7 +57,7 @@ namespace Weather.Test.ControllerTest
             DateTime today = new DateTime(2023, 02, 21);
 
             var controller = new PrevisaoClimaTempoController();
-            var result = controller.GetMaxHoje(today) as ViewResult;
+            var result = controller.GetTopMaxHottest(today) as ViewResult;
             var cidadeResult = result.ViewData.Model;
             Trace.WriteLine("The list: " + cidadeResult);
         }
@@ -69,7 +69,7 @@ namespace Weather.Test.ControllerTest
             DateTime today = new DateTime(2023, 02, 21);
 
             var controller = new PrevisaoClimaTempoController();
-            var result = controller.GetMinHoje(today) as ViewResult;
+            var result = controller.GetTopMinColdest(today) as ViewResult;
             var cidadeResult = result.ViewData.Model;
             Trace.WriteLine("The list: " + cidadeResult);
         }

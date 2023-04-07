@@ -49,7 +49,7 @@ namespace Weather.MVC.Controllers
 
         [HttpGet]
         [Route("max-hoje")]
-        public ActionResult GetMaxHoje(DateTime today)
+        public ActionResult GetTopMaxHottest(DateTime today)
         {
             var resultTop = _context.PrevisoesDeClima.OrderByDescending(x => x.TemperaturaMaxima).Take(3).ToList();
             return View(resultTop);
@@ -57,7 +57,7 @@ namespace Weather.MVC.Controllers
 
         [HttpGet]
         [Route("min-hoje")]
-        public ActionResult GetMinHoje(DateTime today)
+        public ActionResult GetTopMinColdest(DateTime today)
         {
             var resultMin = _context.PrevisoesDeClima.OrderBy(x => x.TemperaturaMinima).Take(3).ToList();
             return View(resultMin);
