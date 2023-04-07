@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Weather.Data.Context;
 using Weather.Data.Models;
+using System.Data.Entity;
 
 namespace Weather.MVC.Controllers
 {
@@ -52,7 +53,7 @@ namespace Weather.MVC.Controllers
         [Route("max-hoje")]
         public ActionResult GetTopMaxHottest(DateTime today)
         {
-            var resultTop = _context.PrevisoesDeClima.OrderByDescending(x => x.TemperaturaMaxima).Take(3).ToList();
+            var resultTop = _context.PrevisoesDeClima.Include(x => x.Cidade).OrderByDescending(x => x.TemperaturaMaxima).Take(3).ToList();
             return View(resultTop);
         }
 
@@ -60,7 +61,7 @@ namespace Weather.MVC.Controllers
         [Route("min-hoje")]
         public ActionResult GetTopMinColdest(DateTime today)
         {
-            var resultMin = _context.PrevisoesDeClima.OrderBy(x => x.TemperaturaMinima).Take(3).ToList();
+            var resultMin = _context.PrevisoesDeClima.Include(x => x.Cidade).OrderBy(x => x.TemperaturaMinima).Take(3).ToList();
             return View(resultMin);
         }
 
