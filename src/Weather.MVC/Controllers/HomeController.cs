@@ -74,6 +74,34 @@ namespace Weather.MVC.Controllers
             return PartialView("TopThreeTemperatures", listTopColdest);
         }
 
+        public PartialViewResult ReportSevenDaysWeather(Cidade cidade)
+        {
+            DateTime today = new DateTime(2023, 02, 23);
+            DateTime fim = today.AddDays(7);
+
+            var reportSevenDaysDB = _context.PrevisoesDeClima
+                                            .Where(
+                                                c => c.DataPrevisao > today && 
+                                                c.DataPrevisao <= fim &&
+                                                c.CidadeId == cidade.Id)
+                                            .ToList();
+
+            var reportSevenDays = new List<WeatherReportViewModel>();
+
+            foreach (PrevisaoClima clima in reportSevenDaysDB)
+            {
+                reportSevenDays.Add(new WeatherReportViewModel()
+                {
+                    Clima = clima.Clima,
+                    TemperaturaMaxima = clima.TemperaturaMaxima,
+                    TemperaturaMinima = clima.TemperaturaMinima
+                });
+            }
+
+            return PartialView(reportSevenDays);
+        }
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
