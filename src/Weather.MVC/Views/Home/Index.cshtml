@@ -1,6 +1,10 @@
-﻿@{
+﻿@model Weather.Data.ViewModel.TopMaxHottestViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
+
+<h1>@Model.TopThreeHottest.First().Clima</h1>
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
