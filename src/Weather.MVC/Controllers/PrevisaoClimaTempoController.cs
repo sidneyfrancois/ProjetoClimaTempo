@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Weather.Data.Context;
+using Weather.Data.Models;
 
 namespace Weather.MVC.Controllers
 {
@@ -61,6 +62,17 @@ namespace Weather.MVC.Controllers
         {
             var resultMin = _context.PrevisoesDeClima.OrderBy(x => x.TemperaturaMinima).Take(3).ToList();
             return View(resultMin);
+        }
+
+        [HttpGet]
+        [Route("clima-hoje")]
+        public ActionResult GetClimaHoje(Cidade cidade)
+        {
+            DateTime today = new DateTime(2023, 02, 23);
+            DateTime fim = today.AddDays(7);
+
+            var result = _context.PrevisoesDeClima.Where(c => c.DataPrevisao > today && c.DataPrevisao <= fim && c.CidadeId == cidade.Id).ToList();
+            return View(result);
         }
     }
 }
