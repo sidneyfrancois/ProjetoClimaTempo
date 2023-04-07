@@ -61,5 +61,17 @@ namespace Weather.Test.ControllerTest
             var cidadeResult = result.ViewData.Model;
             Trace.WriteLine("The list: " + cidadeResult);
         }
+
+        [TestMethod]
+        [DataSource("SourceDefault")]
+        public void GetTopThreeColder_Test()
+        {
+            DateTime today = new DateTime(2023, 02, 21);
+
+            var controller = new PrevisaoClimaTempoController();
+            var result = controller.GetMinHoje(today) as ViewResult;
+            var cidadeResult = result.ViewData.Model;
+            Trace.WriteLine("The list: " + cidadeResult);
+        }
     }
 }
