@@ -57,6 +57,7 @@
     <Compile Include="Models\PrevisaoClima.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\SelectedTopTemperature.cs" />
+    <Compile Include="ViewModel\WeatherReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
