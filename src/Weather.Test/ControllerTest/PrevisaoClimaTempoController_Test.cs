@@ -73,5 +73,22 @@ namespace Weather.Test.ControllerTest
             var cidadeResult = result.ViewData.Model;
             Trace.WriteLine("The list: " + cidadeResult);
         }
+
+        [TestMethod]
+        [DataSource("SourceDefault")]
+        public void GetClimaDays_Test()
+        {
+            var cidade = new Cidade()
+            {
+                Id = 1,
+                Nome = "Goiânia",
+                EstadoId = 1
+            };
+
+            var controller = new PrevisaoClimaTempoController();
+            var result = controller.GetClimaHoje(cidade) as ViewResult;
+            var cidadeResult = result.ViewData.Model;
+            Trace.WriteLine("The list: " + cidadeResult);
+        }
     }
 }
