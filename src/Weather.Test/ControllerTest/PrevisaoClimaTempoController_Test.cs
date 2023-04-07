@@ -17,7 +17,7 @@ namespace Weather.Test.ControllerTest
         {
             var controller = new PrevisaoClimaTempoController();
             var result = controller.GetAllCidades() as ViewResult;
-            Assert.AreEqual(new List<Cidade>().GetType(), result.Model.GetType());
+            Assert.AreEqual(new List<Cidade>().GetType(), result.Model.GetType());  
         }
 
         [TestMethod]
@@ -46,6 +46,18 @@ namespace Weather.Test.ControllerTest
         {
             var controller = new PrevisaoClimaTempoController();
             var result = controller.GetAllClimas() as ViewResult;
+            var cidadeResult = result.ViewData.Model;
+            Trace.WriteLine("The list: " + cidadeResult);
+        }
+
+        [TestMethod]
+        [DataSource("SourceDefault")]
+        public void GetTopThreeHottest_Test()
+        {
+            DateTime today = new DateTime(2023, 02, 21);
+
+            var controller = new PrevisaoClimaTempoController();
+            var result = controller.GetMaxHoje(today) as ViewResult;
             var cidadeResult = result.ViewData.Model;
             Trace.WriteLine("The list: " + cidadeResult);
         }
