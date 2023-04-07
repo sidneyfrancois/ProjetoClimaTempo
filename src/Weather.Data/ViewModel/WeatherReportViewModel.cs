@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Weather.Data.ViewModel
 {
-    class WeatherReportViewModel
+    public class WeatherReportViewModel
     {
         public string Clima { get; set; }
         public decimal TemperaturaMinima { get; set; }
