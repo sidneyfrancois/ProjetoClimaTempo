@@ -6,4 +6,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@{Html.RenderAction("TopThreeHottestTemperatures", "Home");}
+@{
+    Html.RenderAction("TopThreeHottestTemperatures", "Home");
+    Html.RenderAction("TopThreeColdestTemperatures", "Home");
+}
