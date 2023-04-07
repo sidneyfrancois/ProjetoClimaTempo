@@ -1,9 +1,9 @@
 ﻿@using Weather.Data.ViewModel
-@model List<CidadeTemperaturaViewModel>
+@model List<SelectedTopTemperature>
 
 
 @{
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("Partials/TemperaturaMaximaPartial", Model)
+@Html.Partial("Partials/TopThreeTemperature", Model)

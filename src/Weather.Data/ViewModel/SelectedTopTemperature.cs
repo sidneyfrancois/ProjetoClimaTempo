@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Weather.Data.ViewModel
 {
-    public class CidadeTemperaturaViewModel
+    public class SelectedTopTemperature
     {
         public string NomeCidade { get; set; }
         public decimal TemperatureMaxima { get; set; }

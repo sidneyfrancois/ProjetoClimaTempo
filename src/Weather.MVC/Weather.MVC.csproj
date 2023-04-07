@@ -185,7 +185,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Shared\_MainMenu.cshtml" />
-    <Content Include="Views\Home\Partials\TemperaturaMaximaPartial.cshtml" />
+    <Content Include="Views\Home\Partials\TopThreeTemperature.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

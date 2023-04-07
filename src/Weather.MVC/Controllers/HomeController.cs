@@ -26,11 +26,11 @@ namespace Weather.MVC.Controllers
                                         .OrderByDescending(x => x.TemperaturaMaxima)
                                         .Take(3).ToList();
 
-            var ListTopHottest = new List<CidadeTemperaturaViewModel>();
+            var ListTopHottest = new List<SelectedTopTemperature>();
             
             foreach (PrevisaoClima clima in topHottestFromDb)
             {
-                ListTopHottest.Add(new CidadeTemperaturaViewModel()
+                ListTopHottest.Add(new SelectedTopTemperature()
                 {
                     NomeCidade = clima.Cidade.Nome,
                     TemperatureMaxima = clima.TemperaturaMaxima,
