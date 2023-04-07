@@ -6,9 +6,4 @@
     ViewBag.Title = "Home Page";
 }
 
-@foreach (CidadeTemperaturaViewModel city in Model)
-{
-    <p>@city.NomeCidade</p>
-    <p>@city.TemperatureMaxima</p>
-    <p>@city.TemperatureMinima</p>
-}
+@Html.Partial("Partials/TemperaturaMaximaPartial", Model)

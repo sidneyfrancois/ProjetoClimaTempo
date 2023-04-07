@@ -1,0 +1,9 @@
+﻿@using Weather.Data.ViewModel
+@model List<CidadeTemperaturaViewModel>
+
+@foreach (CidadeTemperaturaViewModel city in Model)
+{
+    <p>@city.NomeCidade</p>
+    <p>@city.TemperatureMaxima</p>
+    <p>@city.TemperatureMinima</p>
+}
