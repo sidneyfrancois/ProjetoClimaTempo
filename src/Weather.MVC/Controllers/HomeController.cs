@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Weather.Data.Context;
+using Weather.Data.ViewModel;
 
 namespace Weather.MVC.Controllers
 {
@@ -18,7 +19,9 @@ namespace Weather.MVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var resultTopThreeHottest = new TopMaxHottestViewModel();
+            resultTopThreeHottest.TopThreeHottest = _context.PrevisoesDeClima.OrderByDescending(x => x.TemperaturaMaxima).Take(3).ToList();
+            return View(resultTopThreeHottest);
         }
 
         public ActionResult About()
