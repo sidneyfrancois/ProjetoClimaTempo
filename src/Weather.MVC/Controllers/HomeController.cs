@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Weather.Data.Context;
 using Weather.Data.ViewModel;
 using System.Data.Entity;
+using Weather.Data.Models;
 
 namespace Weather.MVC.Controllers
 {
@@ -20,9 +21,24 @@ namespace Weather.MVC.Controllers
 
         public ActionResult Index()
         {
-            var resultTopThreeHottest = new TopMaxHottestViewModel();
-            resultTopThreeHottest.TopThreeHottest = _context.PrevisoesDeClima.Include(x => x.Cidade).OrderByDescending(x => x.TemperaturaMaxima).Take(3).ToList();
-            return View(resultTopThreeHottest);
+            var topHottestFromDb = _context.PrevisoesDeClima
+                                        .Include(x => x.Cidade)
+                                        .OrderByDescending(x => x.TemperaturaMaxima)
+                                        .Take(3).ToList();
+
+            var ListTopHottest = new List<CidadeTemperaturaViewModel>();
+            
+            foreach (PrevisaoClima clima in topHottestFromDb)
+            {
+                ListTopHottest.Add(new CidadeTemperaturaViewModel()
+                {
+                    NomeCidade = clima.Cidade.Nome,
+                    TemperatureMaxima = clima.TemperaturaMaxima,
+                    TemperatureMinima = clima.TemperaturaMinima
+                });
+            }
+
+            return View(ListTopHottest);
         }
 
         public ActionResult About()
