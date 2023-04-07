@@ -46,5 +46,13 @@ namespace Weather.MVC.Controllers
             var result = _context.PrevisoesDeClima.ToList();
             return View(result);
         }
+
+        [HttpGet]
+        [Route("max-hoje")]
+        public ActionResult GetMaxHoje(DateTime today)
+        {
+            var resultTop = _context.PrevisoesDeClima.OrderByDescending(x => x.TemperaturaMaxima).Take(3).ToList();
+            return View(resultTop);
+        }
     }
 }
