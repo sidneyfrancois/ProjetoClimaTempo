@@ -21,13 +21,18 @@ namespace Weather.MVC.Controllers
 
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public PartialViewResult TopThreeHottestTemperatures()
+        {
             var topHottestFromDb = _context.PrevisoesDeClima
                                         .Include(x => x.Cidade)
                                         .OrderByDescending(x => x.TemperaturaMaxima)
                                         .Take(3).ToList();
 
             var ListTopHottest = new List<SelectedTopTemperature>();
-            
+
             foreach (PrevisaoClima clima in topHottestFromDb)
             {
                 ListTopHottest.Add(new SelectedTopTemperature()
@@ -38,7 +43,7 @@ namespace Weather.MVC.Controllers
                 });
             }
 
-            return View(ListTopHottest);
+            return PartialView("TopThreeTemperatures", ListTopHottest);
         }
 
         public ActionResult About()
