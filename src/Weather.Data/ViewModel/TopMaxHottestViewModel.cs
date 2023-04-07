@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Weather.Data.Models;
 
 namespace Weather.Data.ViewModel
 {
-    class TopMaxHottestViewModel
+    public class TopMaxHottestViewModel
     {
+        public List<PrevisaoClima> TopThreeHottest { get; set; }
     }
 }
