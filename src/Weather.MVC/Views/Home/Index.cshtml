@@ -10,3 +10,13 @@
     Html.RenderAction("TopThreeHottestTemperatures", "Home");
     Html.RenderAction("TopThreeColdestTemperatures", "Home");
 }
+
+<h2>The temperature in the last 7 days</h2>
+
+@{
+    Html.RenderAction("ReportSevenDaysWeather", "Home", new {
+        Id = 1,
+        Nome = "Goiânia",
+        EstadoId = 1
+    });
+}
