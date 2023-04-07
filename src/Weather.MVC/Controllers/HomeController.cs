@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Weather.Data.Context;
 using Weather.Data.ViewModel;
+using System.Data.Entity;
 
 namespace Weather.MVC.Controllers
 {
@@ -20,7 +21,7 @@ namespace Weather.MVC.Controllers
         public ActionResult Index()
         {
             var resultTopThreeHottest = new TopMaxHottestViewModel();
-            resultTopThreeHottest.TopThreeHottest = _context.PrevisoesDeClima.OrderByDescending(x => x.TemperaturaMaxima).Take(3).ToList();
+            resultTopThreeHottest.TopThreeHottest = _context.PrevisoesDeClima.Include(x => x.Cidade).OrderByDescending(x => x.TemperaturaMaxima).Take(3).ToList();
             return View(resultTopThreeHottest);
         }
 
