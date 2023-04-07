@@ -1,12 +1,14 @@
-﻿@model Weather.Data.ViewModel.TopMaxHottestViewModel
+﻿@using Weather.Data.ViewModel
+@model List<CidadeTemperaturaViewModel>
+
 
 @{
     ViewBag.Title = "Home Page";
 }
 
-@foreach (var city in Model.TopThreeHottest)
+@foreach (CidadeTemperaturaViewModel city in Model)
 {
-    <p>@city.Cidade.Nome</p>
-    <p>@city.TemperaturaMaxima</p>
-    <p>@city.TemperaturaMinima</p>
+    <p>@city.NomeCidade</p>
+    <p>@city.TemperatureMaxima</p>
+    <p>@city.TemperatureMinima</p>
 }
