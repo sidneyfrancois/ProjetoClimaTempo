@@ -15,11 +15,29 @@
 @Html.DropDownList("cidades", Model, "selecione a cidade")
 
 <h3>The temperature in the last 7 days</h3>
-@{
-    Html.RenderAction("ReportSevenDaysWeather", "Home", new
-    {
-        Id = 1,
-        Nome = "Goiânia",
-        EstadoId = 1
+
+<div id="container"
+        @Html.Action("ReportSevenDaysWeather", "Home")
+
+</div>
+<div id="testresult">
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#cidades').change(function() {
+            var cidadeId = $(this).val();
+            $.ajax({
+                url: '@Url.Action("ReportSevenDaysWeather", "Home")',
+                type: 'GET',
+                data: { cidadeId: cidadeId },
+                success: function(result) {
+                    $('#testresult').html(result);
+                }
+            });
+        });
     });
-}
+</script>

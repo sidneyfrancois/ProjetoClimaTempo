@@ -80,16 +80,22 @@ namespace Weather.MVC.Controllers
             return PartialView("TopThreeTemperatures", listTopColdest);
         }
 
-        public PartialViewResult ReportSevenDaysWeather(Cidade cidade)
+        public ActionResult ReportSevenDaysWeather(int? cidadeId)
         {
-            DateTime today = new DateTime(2023, 02, 23);
+            if (cidadeId == null)
+            {
+                var empty = new List<WeatherReportViewModel>();
+                return PartialView(empty);
+            }
+
+            DateTime today = new DateTime(2023, 02, 21);
             DateTime fim = today.AddDays(7);
 
             var reportSevenDaysDB = _context.PrevisoesDeClima
                                             .Where(
                                                 c => c.DataPrevisao > today && 
                                                 c.DataPrevisao <= fim &&
-                                                c.CidadeId == cidade.Id)
+                                                c.CidadeId == cidadeId)
                                             .ToList();
 
             var reportSevenDays = new List<WeatherReportViewModel>();
