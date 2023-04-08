@@ -21,7 +21,13 @@ namespace Weather.MVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var allCities = _context.Cidades.Select(c => new SelectListItem
+                                                        {
+                                                            Value = c.Id.ToString(),
+                                                            Text = c.Nome
+                                                        });
+
+            return View(new SelectList(allCities, "Value", "Text"));
         }
 
         public PartialViewResult TopThreeHottestTemperatures()
