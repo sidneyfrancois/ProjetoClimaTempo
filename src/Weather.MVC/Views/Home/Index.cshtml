@@ -1,5 +1,5 @@
-﻿@using Weather.Data.ViewModel
-@model List<SelectedTopTemperature>
+﻿@using Weather.Data.Models
+@model IEnumerable<SelectListItem>
 
 
 @{
@@ -11,10 +11,13 @@
     Html.RenderAction("TopThreeColdestTemperatures", "Home");
 }
 
-<h2>The temperature in the last 7 days</h2>
+<h2>The result:</h2>
+@Html.DropDownList("cidades", Model, "selecione a cidade")
 
+<h3>The temperature in the last 7 days</h3>
 @{
-    Html.RenderAction("ReportSevenDaysWeather", "Home", new {
+    Html.RenderAction("ReportSevenDaysWeather", "Home", new
+    {
         Id = 1,
         Nome = "Goiânia",
         EstadoId = 1
