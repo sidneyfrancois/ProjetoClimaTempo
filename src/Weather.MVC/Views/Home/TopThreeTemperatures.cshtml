@@ -1,10 +1,27 @@
 ﻿@using Weather.Data.ViewModel
 @model List<SelectedTopTemperature>
 
-@foreach (SelectedTopTemperature city in Model)
-{
-    <p>@city.NomeCidade</p>
-    <p>@city.TemperatureMaxima</p>
-    <p>@city.TemperatureMinima</p>
-}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Cidades mais quentes hoje</h3>
+    </div>
+    <div class="panel-body">
+        @foreach (SelectedTopTemperature city in Model)
+        {
+            <div class="row">
+                <div class="col-md-8">
+                    <p>@city.NomeCidade</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Min @city.TemperatureMinima</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Máx @city.TemperatureMaxima</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
 

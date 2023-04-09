@@ -1,9 +1,22 @@
 ﻿@using Weather.Data.ViewModel
 @model List<WeatherReportViewModel>
 
-@foreach (WeatherReportViewModel weahter in Model)
-{
-    <p>@weahter.Clima</p>
-    <p>@weahter.TemperaturaMaxima</p>
-    <p>@weahter.TemperaturaMinima</p>
-}
+<div class="row">
+    @foreach (WeatherReportViewModel weahter in Model)
+    {
+        <div class="col-md-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Dia da semana</div>
+                <div class="panel-body">
+                    <svg width="20" height="18" fill="currentColor" class="bi bi-cloud-lightning-fill" viewBox="0 0 16 16">
+                        <path d="M7.053 11.276A.5.5 0 0 1 7.5 11h1a.5.5 0 0 1 .474.658l-.28.842H9.5a.5.5 0 0 1 .39.812l-2 2.5a.5.5 0 0 1-.875-.433L7.36 14H6.5a.5.5 0 0 1-.447-.724l1-2zm6.352-7.249a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10H13a3 3 0 0 0 .405-5.973z" />
+                    </svg>
+                    @weahter.Clima
+                    <p>Miníma: @weahter.TemperaturaMinima °C</p>
+                    <p>Máxima: @weahter.TemperaturaMaxima °C</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

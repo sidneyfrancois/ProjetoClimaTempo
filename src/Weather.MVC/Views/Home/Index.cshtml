@@ -6,22 +6,28 @@
     ViewBag.Title = "Home Page";
 }
 
-@{
-    Html.RenderAction("TopThreeHottestTemperatures", "Home");
-    Html.RenderAction("TopThreeColdestTemperatures", "Home");
-}
-
-<h2>The result:</h2>
-@Html.DropDownList("cidades", Model, "selecione a cidade")
-
-<h3>The temperature in the last 7 days</h3>
-
-<div id="container"
-        @Html.Action("ReportSevenDaysWeather", "Home")
-
+<div class="jumbotron">
+    <h1>Clima tempo simples</h1>
 </div>
-<div id="testresult">
 
+<div class="row">
+    <div class="col-md-6">
+        @{Html.RenderAction("TopThreeHottestTemperatures", "Home");}
+    </div>
+    <div class="col-md-6">
+        @{Html.RenderAction("TopThreeColdestTemperatures", "Home");}
+    </div>
+</div>
+
+<div class="pull-right">
+    <label>Cidade: </label>
+    @Html.DropDownList("cidades", Model, "selecione a cidade")
+</div>
+
+<h3 class="text-center">Clima para os próximos 7 dias na cidade de Cidade</h3>
+
+<div id="container" class="container-fluid">
+    @Html.Action("ReportSevenDaysWeather", "Home")
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -35,7 +41,7 @@
                 type: 'GET',
                 data: { cidadeId: cidadeId },
                 success: function(result) {
-                    $('#testresult').html(result);
+                    $('#container').html(result);
                 }
             });
         });
