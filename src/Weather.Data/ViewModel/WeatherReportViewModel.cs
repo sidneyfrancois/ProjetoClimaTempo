@@ -9,6 +9,7 @@ namespace Weather.Data.ViewModel
     public class WeatherReportViewModel
     {
         public string Clima { get; set; }
+        public string DayOfWeek { get; set; }
         public decimal TemperaturaMinima { get; set; }
         public decimal TemperaturaMaxima { get; set; }
     }
