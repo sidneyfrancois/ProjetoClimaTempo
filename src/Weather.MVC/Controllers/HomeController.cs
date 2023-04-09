@@ -7,12 +7,14 @@ using Weather.Data.Context;
 using Weather.Data.ViewModel;
 using System.Data.Entity;
 using Weather.Data.Models;
+using System.Globalization;
 
 namespace Weather.MVC.Controllers
 {
     public class HomeController : Controller
     {
         private readonly MyDbContext _context;
+        private readonly CultureInfo culture = new CultureInfo("pt-BR");
 
         public HomeController()
         {
@@ -106,8 +108,9 @@ namespace Weather.MVC.Controllers
                 {
                     Clima = clima.Clima,
                     TemperaturaMaxima = clima.TemperaturaMaxima,
-                    TemperaturaMinima = clima.TemperaturaMinima
-                });
+                    TemperaturaMinima = clima.TemperaturaMinima,
+                    DayOfWeek = culture.DateTimeFormat.DayNames[(int)clima.DataPrevisao.DayOfWeek]
+            });
             }
 
             return PartialView(reportSevenDays);
