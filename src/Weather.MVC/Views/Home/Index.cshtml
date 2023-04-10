@@ -66,7 +66,7 @@
                 type: 'GET',
                 data: { cidadeId: cidadeId },
                 success: function (result) {
-                    $('#container').append(result);
+                    $('#container').append(`<div id="${cidadeId}">${result}</div>`);
                 }
             });
         });
@@ -74,6 +74,13 @@
         // limpar todos os itens 
         $('#cidades').on('select2:clear', function (e) {
             $('#container').empty();
+        })
+
+        // remover elemento dentro do container
+        $('#cidades').on('select2:unselect', function (e) {
+            console.log(e.params.data.id);
+            console.log($(`#container > #${e.params.data.id}`));
+            $(`#container > #${e.params.data.id}`).empty();
         })
     });
 
