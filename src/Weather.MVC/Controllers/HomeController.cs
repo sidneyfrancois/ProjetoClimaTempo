@@ -79,22 +79,13 @@ namespace Weather.MVC.Controllers
                 return PartialView(empty);
             }
 
-            DateTime today = new DateTime(2023, 02, 21);
-            DateTime fim = today.AddDays(7);
+            var reportSevenDaysDB = _repositoryPrevisaoClima.GetReportSevenDays(cidadeId);
 
-            var reportSevenDaysDB = _context.PrevisoesDeClima
-                                            .Include(x => x.Cidade)
-                                            .Where(
-                                                c => c.DataPrevisao > today && 
-                                                c.DataPrevisao <= fim &&
-                                                c.CidadeId == cidadeId)
-                                            .ToList();
-
-            var reportSevenDays = new List<WeatherReportViewModel>();
+            var reportSevenDaysViewModel = new List<WeatherReportViewModel>();
 
             foreach (PrevisaoClima clima in reportSevenDaysDB)
             {
-                reportSevenDays.Add(new WeatherReportViewModel()
+                reportSevenDaysViewModel.Add(new WeatherReportViewModel()
                 {
                     Cidade = clima.Cidade.Nome,
                     Clima = clima.Clima,
@@ -104,7 +95,7 @@ namespace Weather.MVC.Controllers
             });
             }
 
-            return PartialView(reportSevenDays);
+            return PartialView(reportSevenDaysViewModel);
         }
 
 
