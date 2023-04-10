@@ -21,11 +21,11 @@
 
 <div class="pull-right">
     <label>Cidade: </label>
-    @Html.DropDownList("cidades", Model, "")
+    @Html.DropDownList("cidades", Model, "", new { style = "width: 400px;" })
 </div>
 
 
-<div id="container" class="container-fluid">
+<div id="container" class="container-fluid" style="margin-top: 130px;">
     @Html.Action("ReportSevenDaysWeather", "Home")
 </div>
 
@@ -53,7 +53,8 @@
             placeholder: 'selecione a cidade',
             multiple: true,
             allowClear: true,
-            maximumSelectionLength: 5
+            maximumSelectionLength: 5,
+            width: 'resolve'
         });
 
         // chamar controller ao selecionar option
