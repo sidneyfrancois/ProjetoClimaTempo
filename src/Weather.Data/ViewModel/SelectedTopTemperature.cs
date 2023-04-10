@@ -11,5 +11,6 @@ namespace Weather.Data.ViewModel
         public string NomeCidade { get; set; }
         public decimal TemperatureMaxima { get; set; }
         public decimal TemperatureMinima { get; set; }
+        public string Title { get; set; }
     }
 }

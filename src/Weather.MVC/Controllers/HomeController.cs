@@ -45,7 +45,8 @@ namespace Weather.MVC.Controllers
                 {
                     NomeCidade = clima.Cidade.Nome,
                     TemperatureMaxima = clima.TemperaturaMaxima,
-                    TemperatureMinima = clima.TemperaturaMinima
+                    TemperatureMinima = clima.TemperaturaMinima,
+                    Title = "quentes"
                 });
             }
 
@@ -64,7 +65,8 @@ namespace Weather.MVC.Controllers
                 {
                     NomeCidade = clima.Cidade.Nome,
                     TemperatureMaxima = clima.TemperaturaMaxima,
-                    TemperatureMinima = clima.TemperaturaMinima
+                    TemperatureMinima = clima.TemperaturaMinima,
+                    Title = "frias"
                 });
             }
 
