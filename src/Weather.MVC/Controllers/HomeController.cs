@@ -19,11 +19,11 @@ namespace Weather.MVC.Controllers
         private readonly CidadeRepository _repositoryCidade;
         private readonly CultureInfo culture = new CultureInfo("pt-BR");
 
-        public HomeController()
+        public HomeController(MyDbContext context, CidadeRepository repositoryCidade, PrevisaoClimaRepository repositoryPrevisaoClima)
         {
-            _context = new MyDbContext();
-            _repositoryPrevisaoClima = new PrevisaoClimaRepository();
-            _repositoryCidade = new CidadeRepository();
+            _context = context;
+            _repositoryCidade = repositoryCidade;
+            _repositoryPrevisaoClima = repositoryPrevisaoClima;
         }
 
         public ActionResult Index()

@@ -12,9 +12,9 @@ namespace Weather.MVC.Repository
     public class PrevisaoClimaRepository
     {
         private readonly MyDbContext _context;
-        public PrevisaoClimaRepository()
+        public PrevisaoClimaRepository(MyDbContext context)
         {
-            _context = new MyDbContext();
+            _context = context;
         }
 
         public List<PrevisaoClima> GetAll()

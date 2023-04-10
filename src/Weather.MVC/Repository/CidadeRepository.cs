@@ -11,9 +11,9 @@ namespace Weather.MVC.Repository
     public class CidadeRepository
     {
         private readonly MyDbContext _context;
-        public CidadeRepository()
+        public CidadeRepository(MyDbContext context)
         {
-            _context = new MyDbContext();
+            _context = context;
         }
 
         public SelectList GetAllCitiesForDropDownList()
