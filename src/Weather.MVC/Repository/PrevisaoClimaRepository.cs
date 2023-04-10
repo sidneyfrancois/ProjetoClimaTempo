@@ -27,7 +27,7 @@ namespace Weather.MVC.Repository
             Expression<Func<PrevisaoClima, bool>> expressionWhere, 
             Expression<Func<PrevisaoClima, object>> orderTempMaxOrMin, 
             int minTake
-        )
+            )
         {
             var topTemperatures = _context.PrevisoesDeClima
                                         .Include(x => x.Cidade)
@@ -35,6 +35,23 @@ namespace Weather.MVC.Repository
                                         .OrderBy(orderTempMaxOrMin)
                                         .Take(minTake).ToList();
             return topTemperatures;
+        }
+
+        public List<PrevisaoClima> GetReportSevenDays(
+            int cidadeId,
+            DateTime initialDate,
+            DateTime endDate
+            )
+        {
+            var reportSevenDays = _context.PrevisoesDeClima
+                                    .Include(x => x.Cidade)
+                                    .Where(
+                                        c => c.DataPrevisao > initialDate &&
+                                                c.DataPrevisao <= endDate &&
+                                                c.CidadeId == cidadeId)
+                                    .ToList();
+
+            return reportSevenDays;
         }
     }
 }
