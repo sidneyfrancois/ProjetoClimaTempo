@@ -66,13 +66,9 @@
                     $('#container').append(result);
                 }
             });
-
         });
 
-        $('#cidades').on('select2:unselect', function (e) {
-            console.log(e);
-        })
-
+        // limpar todos os itens 
         $('#cidades').on('select2:clear', function (e) {
             $('#container').empty();
         })
