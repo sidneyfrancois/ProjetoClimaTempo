@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Weather.Data.Context;
 using Weather.Data.Models;
 
-namespace Weather.MVC.Services
+namespace Weather.MVC.Repository
 {
     public class CidadeRepository
     {
