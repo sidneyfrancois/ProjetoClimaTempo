@@ -1,27 +1,34 @@
 ﻿@using Weather.Data.ViewModel
 @model List<SelectedTopTemperature>
 
+@if (Model.Count() != 0)
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cidades mais @Model.First().Title hoje</h3>
+        </div>
+        <div class="panel-body">
+            @foreach (SelectedTopTemperature city in Model)
+            {
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>@city.NomeCidade</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Min @city.TemperatureMinima</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>Máx @city.TemperatureMaxima</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <h3>Não foi possível coletar o clima para está data</h3>
+}
 
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">Cidades mais @Model.First().Title hoje</h3>
-    </div>
-    <div class="panel-body">
-        @foreach (SelectedTopTemperature city in Model)
-        {
-            <div class="row">
-                <div class="col-md-8">
-                    <p>@city.NomeCidade</p>
-                </div>
-                <div class="col-md-2">
-                    <p>Min @city.TemperatureMinima</p>
-                </div>
-                <div class="col-md-2">
-                    <p>Máx @city.TemperatureMaxima</p>
-                </div>
-            </div>
-        }
-    </div>
-</div>
 
 

@@ -28,7 +28,7 @@ namespace Weather.MVC.Repository
             int minTake
             )
         {
-            DateTime today = new DateTime(2023, 02, 23);
+            DateTime today = DateTime.Today;
 
             if (hottestOrColdest == "hottest")
             {
@@ -53,7 +53,7 @@ namespace Weather.MVC.Repository
 
         public List<PrevisaoClima> GetReportSevenDays(int? cidadeId)
         {
-            DateTime today = new DateTime(2023, 02, 21);
+            DateTime today = DateTime.Today;
             DateTime endDate = today.AddDays(7);
 
             var reportSevenDays = _context.PrevisoesDeClima
