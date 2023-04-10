@@ -35,17 +35,11 @@ namespace Weather.MVC.Controllers
 
         public PartialViewResult TopThreeHottestTemperatures()
         {
-            DateTime today = new DateTime(2023, 02, 23);
-
-            var topHottestFromDb = _context.PrevisoesDeClima
-                                        .Include(x => x.Cidade)
-                                        .Where(c => c.DataPrevisao.Equals(today))
-                                        .OrderByDescending(x => x.TemperaturaMaxima)
-                                        .Take(3).ToList();
+            var topHottest = _repositoryPrevisaoClima.GetPrevisaoClimaTop3("hottest", 3);
 
             var ListTopHottest = new List<SelectedTopTemperature>();
 
-            foreach (PrevisaoClima clima in topHottestFromDb)
+            foreach (PrevisaoClima clima in topHottest)
             {
                 ListTopHottest.Add(new SelectedTopTemperature()
                 {
@@ -60,17 +54,11 @@ namespace Weather.MVC.Controllers
 
         public PartialViewResult TopThreeColdestTemperatures()
         {
-            DateTime today = new DateTime(2023, 02, 23);
-
-            var topColdestFromDb = _context.PrevisoesDeClima
-                                        .Include(x => x.Cidade)
-                                        .Where(c => c.DataPrevisao.Equals(today))
-                                        .OrderBy(x => x.TemperaturaMaxima)
-                                        .Take(3).ToList();
+            var topColdest = _repositoryPrevisaoClima.GetPrevisaoClimaTop3("coldest", 3);
 
             var listTopColdest = new List<SelectedTopTemperature>();
 
-            foreach (PrevisaoClima clima in topColdestFromDb)
+            foreach (PrevisaoClima clima in topColdest)
             {
                 listTopColdest.Add(new SelectedTopTemperature()
                 {
