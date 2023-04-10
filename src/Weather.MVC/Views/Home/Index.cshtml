@@ -34,6 +34,12 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
 
+<style>
+    .select2-results__option[aria-selected=true] {
+        display: none;
+    }
+</style>
+
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -45,7 +51,6 @@
         $("#cidades").select2({
             placeholder: 'selecione a cidade',
             multiple: true,
-            tags: true,
             allowClear: true,
             maximumSelectionLength: 5
         });
@@ -57,11 +62,16 @@
                 url: '@Url.Action("ReportSevenDaysWeather", "Home")',
                 type: 'GET',
                 data: { cidadeId: cidadeId },
-                success: function(result) {
+                success: function (result) {
                     $('#container').append(result);
                 }
             });
+
         });
+
+        $('#cidades').on('select2:unselect', function (e) {
+            console.log(e);
+        })
 
         $('#cidades').on('select2:clear', function (e) {
             $('#container').empty();
