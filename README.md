@@ -10,6 +10,8 @@ height="140" align="right">
 
 Para este projeto não foi utilizado scaffolding (code first approach) pois o banco de dados e tabelas foram fornecidos com o enunciado do teste. O Docker foi utilizado para criar um container SQL Server, o script fornecido foi executado neste container gerando as tabelas.
 
+<img src="climaTempoScreenShoot.png">
+
 O que foi finalizado até o momento:
 - [x] As cidades mais frias e quentes do dia
 - [x] Previsão do tempo dos próximos 7 dias da cidade selecionada
