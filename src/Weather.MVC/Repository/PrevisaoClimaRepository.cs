@@ -24,17 +24,31 @@ namespace Weather.MVC.Repository
         }
 
         public List<PrevisaoClima> GetPrevisaoClimaTop3(
-            Expression<Func<PrevisaoClima, bool>> expressionWhere, 
-            Expression<Func<PrevisaoClima, object>> orderTempMaxOrMin, 
+            string hottestOrColdest, 
             int minTake
             )
         {
-            var topTemperatures = _context.PrevisoesDeClima
-                                        .Include(x => x.Cidade)
-                                        .Where(expressionWhere)
-                                        .OrderBy(orderTempMaxOrMin)
-                                        .Take(minTake).ToList();
-            return topTemperatures;
+            DateTime today = new DateTime(2023, 02, 23);
+
+            if (hottestOrColdest == "hottest")
+            {
+                return _context.PrevisoesDeClima
+                            .Include(x => x.Cidade)
+                            .Where(c => c.DataPrevisao.Equals(today))
+                            .OrderByDescending(x => x.TemperaturaMaxima)
+                            .Take(minTake).ToList();
+            }
+
+            if (hottestOrColdest == "coldest")
+            {
+                return _context.PrevisoesDeClima
+                            .Include(x => x.Cidade)
+                            .Where(c => c.DataPrevisao.Equals(today))
+                            .OrderBy(x => x.TemperaturaMaxima)
+                            .Take(minTake).ToList();
+            }
+
+            return new List<PrevisaoClima>();
         }
 
         public List<PrevisaoClima> GetReportSevenDays(
