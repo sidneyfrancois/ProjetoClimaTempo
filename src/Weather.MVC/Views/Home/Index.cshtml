@@ -37,6 +37,11 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+        // remover a option vazia que é inserida na incialização
+        $("#cidades option[value='']").remove();
+        // remover todos os itens selecionados, deixar o select session do dropdown limpo
+        $('#cidades').val(null).trigger('change');
+
         $("#cidades").select2({
             multiple: true,
             tags: true,
@@ -56,6 +61,10 @@
                 }
             });
         });
+
+        $('#cidades').on('select2:clear', function (e) {
+            console.log(e)
+        })
     });
 
 
