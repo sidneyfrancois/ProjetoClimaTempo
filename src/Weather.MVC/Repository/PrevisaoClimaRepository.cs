@@ -51,16 +51,15 @@ namespace Weather.MVC.Repository
             return new List<PrevisaoClima>();
         }
 
-        public List<PrevisaoClima> GetReportSevenDays(
-            int cidadeId,
-            DateTime initialDate,
-            DateTime endDate
-            )
+        public List<PrevisaoClima> GetReportSevenDays(int? cidadeId)
         {
+            DateTime today = new DateTime(2023, 02, 21);
+            DateTime endDate = today.AddDays(7);
+
             var reportSevenDays = _context.PrevisoesDeClima
                                     .Include(x => x.Cidade)
                                     .Where(
-                                        c => c.DataPrevisao > initialDate &&
+                                        c => c.DataPrevisao > today &&
                                                 c.DataPrevisao <= endDate &&
                                                 c.CidadeId == cidadeId)
                                     .ToList();
