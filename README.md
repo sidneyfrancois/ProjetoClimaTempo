@@ -8,7 +8,7 @@ height="140" align="right">
 
 # Projeto Clima Tempo (Auvo Tecnologia) :computer:
 
-Para este projeto não foi utilizado scaffolding (code first approach) pois o banco de dados e tabelas foram fornecidos com o enunciado do teste. O Docker foi utilizado para criar um container SQL Server, o script fornecido foi executado neste container gerando as tabelas.
+Para este projeto não foi utilizado scaffolding (code first approach) pois o banco de dados e tabelas foram fornecidos com o enunciado do teste. O Docker foi utilizado para criar um container SQL Server, o script fornecido foi executado neste container gerando as tabelas. Foi utilizado o .Net Framework 4.6.1
 
 <img src="climaTempoScreenShoot.png">
 
