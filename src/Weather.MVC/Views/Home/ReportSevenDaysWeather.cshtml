@@ -1,10 +1,14 @@
 ﻿@using Weather.Data.ViewModel
 @model List<WeatherReportViewModel>
 
+@if (Model.Count() != 0)
+{
+    <h3 class="text-center">Clima para os próximos 7 dias na cidade de @Model.First().Cidade</h3>
+}
 <div class="row">
     @foreach (WeatherReportViewModel weahter in Model)
     {
-        <div class="col-md-2 center-block" style="width:270px;">
+        <div class="col-md-2 center-block" style="width:260px;">
             <div class="panel panel-primary">
                 <div class="panel-heading">@weahter.DayOfWeek</div>
                 <div class="panel-body">

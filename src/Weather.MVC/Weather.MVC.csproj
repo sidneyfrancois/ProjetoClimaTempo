@@ -189,7 +189,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Configuration\" />
-    <Folder Include="Views\PrevisaoClimaTempo\" />
     <Folder Include="Views\Weather\" />
   </ItemGroup>
   <ItemGroup>

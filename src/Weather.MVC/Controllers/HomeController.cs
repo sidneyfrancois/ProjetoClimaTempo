@@ -94,6 +94,7 @@ namespace Weather.MVC.Controllers
             DateTime fim = today.AddDays(7);
 
             var reportSevenDaysDB = _context.PrevisoesDeClima
+                                            .Include(x => x.Cidade)
                                             .Where(
                                                 c => c.DataPrevisao > today && 
                                                 c.DataPrevisao <= fim &&
@@ -106,6 +107,7 @@ namespace Weather.MVC.Controllers
             {
                 reportSevenDays.Add(new WeatherReportViewModel()
                 {
+                    Cidade = clima.Cidade.Nome,
                     Clima = clima.Clima,
                     TemperaturaMaxima = clima.TemperaturaMaxima,
                     TemperaturaMinima = clima.TemperaturaMinima,

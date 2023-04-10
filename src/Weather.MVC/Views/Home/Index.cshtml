@@ -21,10 +21,9 @@
 
 <div class="pull-right">
     <label>Cidade: </label>
-    @Html.DropDownList("cidades", Model, "selecione a cidade")
+    @Html.DropDownList("cidades", Model, "")
 </div>
 
-<h3 class="text-center">Clima para os próximos 7 dias na cidade de Cidade</h3>
 
 <div id="container" class="container-fluid">
     @Html.Action("ReportSevenDaysWeather", "Home")
@@ -32,18 +31,32 @@
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+
 <script type="text/javascript">
+
     $(document).ready(function () {
-        $('#cidades').change(function() {
-            var cidadeId = $(this).val();
+        $("#cidades").select2({
+            multiple: true,
+            tags: true,
+            allowClear: true,
+            maximumSelectionLength: 5
+        });
+
+        $('#cidades').on('select2:select', function (e) {
+            var cidadeId = e.params.data.id;
+
             $.ajax({
                 url: '@Url.Action("ReportSevenDaysWeather", "Home")',
                 type: 'GET',
                 data: { cidadeId: cidadeId },
                 success: function(result) {
-                    $('#container').html(result);
+                    $('#container').append(result);
                 }
             });
         });
     });
+
+
 </script>
