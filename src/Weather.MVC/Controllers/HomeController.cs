@@ -8,28 +8,29 @@ using Weather.Data.ViewModel;
 using System.Data.Entity;
 using Weather.Data.Models;
 using System.Globalization;
+using Weather.MVC.Repository;
 
 namespace Weather.MVC.Controllers
 {
     public class HomeController : Controller
     {
         private readonly MyDbContext _context;
+        private readonly PrevisaoClimaRepository _repositoryPrevisaoClima;
+        private readonly CidadeRepository _repositoryCidade;
         private readonly CultureInfo culture = new CultureInfo("pt-BR");
 
         public HomeController()
         {
             _context = new MyDbContext();
+            _repositoryPrevisaoClima = new PrevisaoClimaRepository();
+            _repositoryCidade = new CidadeRepository();
         }
 
         public ActionResult Index()
         {
-            var allCities = _context.Cidades.Select(c => new SelectListItem
-                                                        {
-                                                            Value = c.Id.ToString(),
-                                                            Text = c.Nome
-                                                        });
+            var allCities = _repositoryCidade.GetAllCitiesForDropDownList();
 
-            return View(new SelectList(allCities, "Value", "Text"));
+            return View(allCities);
         }
 
         public PartialViewResult TopThreeHottestTemperatures()
